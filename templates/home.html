@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="text-4xl font-bold mb-6">Welcome to AI-Powered Exam Preparation</h1>
+    <p class="text-xl mb-8">Prepare for CBSE and IIT JEE exams with personalized, AI-generated questions.</p>
+    <div>
+        <a href="{{ url_for('dashboard') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4">Get Started</a>
+        <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Learn More</a>
+    </div>
+</div>
+{% endblock %}
+

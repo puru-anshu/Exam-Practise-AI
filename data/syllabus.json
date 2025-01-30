@@ -1,0 +1,134 @@
+{
+    "Class XI": {
+        "Mathematics": [
+            "Sets",
+            "Relations and Functions",
+            "Trigonometric Functions",
+            "Principle of Mathematical Induction",
+            "Complex Numbers and Quadratic Equations",
+            "Linear Inequalities",
+            "Permutations and Combinations",
+            "Binomial Theorem",
+            "Sequences and Series",
+            "Straight Lines",
+            "Conic Sections",
+            "Introduction to Three Dimensional Geometry",
+            "Limits and Derivatives",
+            "Mathematical Reasoning",
+            "Statistics",
+            "Probability"
+        ],
+        "Physics": {
+            "Part 1": [
+                "Physical World",
+                "Units and Measurements",
+                "Motion in a Straight Line",
+                "Motion in a Plane",
+                "Laws of Motion",
+                "Work, Energy, and Power",
+                "System of Particles and Rotational Motion",
+                "Gravitation"
+            ],
+            "Part 2": [
+                "Mechanical Properties of Solids",
+                "Mechanical Properties of Fluids",
+                "Thermal Properties of Matter",
+                "Thermodynamics",
+                "Kinetic Theory",
+                "Oscillations",
+                "Waves"
+            ]
+        },
+        "Chemistry": {
+            "Part 1": [
+                "Some Basic Concepts of Chemistry",
+                "Structure of Atom",
+                "Classification of Elements and Periodicity in Properties",
+                "Chemical Bonding and Molecular Structure",
+                "States of Matter",
+                "Thermodynamics",
+                "Equilibrium"
+            ],
+            "Part 2": [
+                "Redox Reactions",
+                "Hydrogen",
+                "The s-Block (Alkali and Alkaline Earth Metals)",
+                "Some p-Block Elements",
+                "Organic Chemistry - Some Basic Principles and Techniques",
+                "Hydrocarbons",
+                "Environmental Chemistry"
+            ]
+        },
+        "Computer Science": [
+            "Computer System and Organization",
+            "Computational Thinking and Programming - I",
+            "Society, Law, and Ethics"
+        ]
+    },
+    "Class XII": {
+        "Mathematics": [
+            "Relations and Functions",
+            "Inverse Trigonometric Functions",
+            "Matrices",
+            "Determinants",
+            "Continuity and Differentiability",
+            "Applications of Derivatives",
+            "Integrals",
+            "Applications of Integrals",
+            "Differential Equations",
+            "Vector Algebra",
+            "Three Dimensional Geometry",
+            "Linear Programming",
+            "Probability"
+        ],
+        "Physics": {
+            "Part 1": [
+                "Electric Charges and Fields",
+                "Electrostatic Potential and Capacitance",
+                "Current Electricity",
+                "Moving Charges and Magnetism",
+                "Magnetism and Matter",
+                "Electromagnetic Induction",
+                "Alternating Current"
+            ],
+            "Part 2": [
+                "Electromagnetic Waves",
+                "Ray Optics and Optical Instruments",
+                "Wave Optics",
+                "Dual Nature of Radiation and Matter",
+                "Atoms",
+                "Nuclei",
+                "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+                "Communication Systems"
+            ]
+        },
+        "Chemistry": {
+            "Part 1": [
+                "Solid State",
+                "Solutions",
+                "Electrochemistry",
+                "Chemical Kinetics",
+                "Surface Chemistry",
+                "General Principles and Processes of Isolation of Elements",
+                "The p-Block Elements",
+                "The d- and f-Block Elements",
+                "Coordination Compounds"
+            ],
+            "Part 2": [
+                "Haloalkanes and Haloarenes",
+                "Alcohols, Phenols, and Ethers",
+                "Aldehydes, Ketones, and Carboxylic Acids",
+                "Organic Compounds Containing Nitrogen",
+                "Biomolecules",
+                "Polymers",
+                "Chemistry in Everyday Life"
+            ]
+        },
+        "Computer Science": [
+            "Computational Thinking and Programming - II",
+            "Computer Networks",
+            "Database Management System",
+            "Society, Law, and Ethics"
+        ]
+    }
+}
