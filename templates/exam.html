@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-6">{{ subject.name }} Exam</h1>
+
+<div class="bg-gray-50">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                {{ subject.name }}
+            </h1>
+        </div>
+    </div>
+</div>
+
 <form method="POST" action="{{ url_for('submit_exam') }}">
     <input type="hidden" name="subject_id" value="{{ subject.id }}">
     <input type="hidden" name="chapter_id" value="{{ chapter_id }}">

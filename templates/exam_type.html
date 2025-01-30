@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-6">{{ exam_type.name }}</h1>
-<h2 class="text-2xl font-semibold mb-4">Select a Class</h2>
-<div class="grid grid-cols-2 gap-4">
+<div class="bg-white">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                {{ exam_type.name }}
+            </h1>
+            <p class="mt-5 max-w-xl mx-auto text-xl text-gray-500">
+                {{exam_type.description}}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 py-8">
     {% for class in classes %}
     <a href="{{ url_for('class_view', class_id=class.id) }}"
         class="bg-white hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-center">
