@@ -4,6 +4,7 @@
 <h1 class="text-3xl font-bold mb-6">{{ subject.name }} Exam</h1>
 <form method="POST" action="{{ url_for('submit_exam') }}">
     <input type="hidden" name="subject_id" value="{{ subject.id }}">
+    <input type="hidden" name="chapter_id" value="{{ chapter_id }}">
     <input type="hidden" name="questions" value='{{ questions|tojson|safe }}'>
     
     

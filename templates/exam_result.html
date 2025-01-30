@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Exam Results</h1>
+
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Your Score</h2>
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-lg">Correct Answers: {{ correct_answers }} / {{ total_questions }}</p>
+                <p class="text-lg">Mark: {{ "%.2f"|format(mark) }}%</p>
+            </div>
+            <div
+                class="text-5xl font-bold {{ 'text-green-600' if mark >= 70 else 'text-yellow-600' if mark >= 50 else 'text-red-600' }}">
+                {{ "%.0f"|format(mark) }}%
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-4">Question Review</h2>
+    {% for result in results %}
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h3 class="text-xl font-semibold mb-2">Question {{ loop.index }}</h3>
+        <p class="mb-4">{{ result.question }}</p>
+
+        <div class="space-y-2 mb-4">
+            {% for option in result.options %}
+            <div class="flex items-center">
+                <span class="w-6 h-6 flex items-center justify-center rounded-full mr-2 
+                            {{ 'bg-green-500 text-white' if loop.index0 == result.correct_answer|int - 1 else
+                               'bg-red-500 text-white' if loop.index0 == result.user_answer|int - 1 and not result.is_correct else
+                               'bg-gray-200' }}">
+                    {{ loop.index }}
+                </span>
+                <span>{{ option }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-sm">
+            {% if result.is_correct %}
+            <p class="text-green-600">Correct! Well done.</p>
+            {% else %}
+            <p class="text-red-600">Incorrect. The correct answer is option {{ result.correct_answer }}.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="mt-8">
+        <a href="{{ url_for('dashboard') }}"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}

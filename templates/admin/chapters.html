@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-6">Manage Subjects</h1>
+<h1 class="text-3xl font-bold mb-6">Manage Chapters</h1>
 <form method="POST" class="mb-8">
     <div class="mb-4">
         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -9,23 +9,25 @@
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
     </div>
     <div class="mb-4">
-        <label for="class_id" class="block text-sm font-medium text-gray-700">Class</label>
-        <select name="class_id" id="class_id" required
+        <label for="subject_id" class="block text-sm font-medium text-gray-700">Subject</label>
+        <select name="subject_id" id="subject_id" required
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-            {% for class in classes %}
-            <option value="{{ class.id }}">{{ class.name }} ({{ class.exam_type.name }})</option>
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }} ({{ subject.class_.name }} - {{
+                subject.class_.exam_type.name }})</option>
             {% endfor %}
         </select>
     </div>
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Add Subject
+        Add Chapter
     </button>
 </form>
 
-<h2 class="text-2xl font-semibold mb-4">Existing Subjects</h2>
+<h2 class="text-2xl font-semibold mb-4">Existing Chapters</h2>
 <ul class="list-disc pl-5">
-    {% for subject in subjects %}
-    <li>{{ subject.name }} ({{ subject.class_.name }} - {{ subject.class_.exam_type.name }})</li>
+    {% for chapter in chapters %}
+    <li>{{ chapter.name }} ({{ chapter.subject.name }} - {{ chapter.subject.class_.name }} - {{
+        chapter.subject.class_.exam_type.name }})</li>
     {% endfor %}
 </ul>
 {% endblock %}

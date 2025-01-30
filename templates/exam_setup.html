@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set cid = request.args.get('chapter_id', 'all')  %}
+<script>console.log("cid = {{ cid }}");</script>
+<h1 class="text-3xl font-bold mb-6">Exam Setup: {{ subject.name }}</h1>
+<form id="examSetupForm" class="space-y-4">
+    <div>
+        <label for="chapter_id" class="block text-sm font-medium text-gray-700">Chapter</label>
+        <select name="chapter_id" id="chapter_id"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <option value="all">All Chapters</option>
+            {% for chapter in chapters %}
+            <option value="{{ chapter.id }}" {% if chapter.id|string == cid %} selected {% endif %} >
+                {{ chapter.name }} 
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="difficulty" class="block text-sm font-medium text-gray-700">Difficulty</label>
+        <select name="difficulty" id="difficulty"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+    <div>
+        <label for="num_questions" class="block text-sm font-medium text-gray-700">Number of Questions</label>
+        <input type="number" name="num_questions" id="num_questions" min="1" max="50" value="10"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Start Exam
+    </button>
+</form>
+
+<div id="loadingContainer" class="hidden mt-8">
+    <p class="text-lg font-semibold mb-2">Generating exam questions...</p>
+    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+    </div>
+    <p id="progressText" class="text-sm text-gray-600 mt-2">0%</p>
+</div>
+
+<script>
+    document.getElementById('examSetupForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const loadingContainer = document.getElementById('loadingContainer');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+
+        loadingContainer.classList.remove('hidden');
+
+        fetch('{{ url_for("exam_setup", subject_id=subject.id) }}', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.body.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while setting up the exam. Please try again.');
+            });
+
+        // Simulate progress (replace this with real progress updates if possible)
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 10;
+            if (progress > 100) {
+                clearInterval(interval);
+            } else {
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${progress}%`;
+            }
+        }, 500);
+    });
+</script>
+{% endblock %}
