@@ -1,0 +1,108 @@
+{
+    "IIT JEE Syllabus": {
+        "Class 11": {
+            "Mathematics": [
+                "Sets, Relations, and Functions",
+                "Complex Numbers and Quadratic Equations",
+                "Permutations and Combinations",
+                "Binomial Theorem and Its Simple Applications",
+                "Sequences and Series",
+                "Straight Lines and Pair of Straight Lines",
+                "Circles and Conic Sections",
+                "Mathematical Induction",
+                "Trigonometric Functions and Equations",
+                "Inverse Trigonometric Functions",
+                "Properties of Triangles",
+                "Limits and Derivatives",
+                "Mathematical Reasoning",
+                "Statistics",
+                "Probability"
+            ],
+            "Physics": [
+                "Physical World and Measurement",
+                "Kinematics",
+                "Laws of Motion",
+                "Work, Energy, and Power",
+                "System of Particles and Rotational Motion",
+                "Gravitation",
+                "Properties of Solids and Liquids",
+                "Thermodynamics",
+                "Behaviour of Perfect Gas and Kinetic Theory",
+                "Oscillations and Waves"
+            ],
+            "Chemistry": {
+                "Physical Chemistry": [
+                    "Some Basic Concepts of Chemistry",
+                    "Structure of Atom",
+                    "States of Matter",
+                    "Thermodynamics",
+                    "Equilibrium",
+                    "Redox Reactions"
+                ],
+                "Inorganic Chemistry": [
+                    "Classification of Elements and Periodicity in Properties",
+                    "Hydrogen",
+                    "The s-Block Elements (Alkali and Alkaline Earth Metals)",
+                    "Some p-Block Elements"
+                ],
+                "Organic Chemistry": [
+                    "Some Basic Principles and Techniques",
+                    "Hydrocarbons",
+                    "Environmental Chemistry"
+                ]
+            }
+        },
+        "Class 12": {
+            "Mathematics": [
+                "Relations and Functions",
+                "Inverse Trigonometric Functions",
+                "Matrices and Determinants",
+                "Continuity and Differentiability",
+                "Applications of Derivatives",
+                "Integrals",
+                "Application of Integrals",
+                "Differential Equations",
+                "Vector Algebra",
+                "Three Dimensional Geometry",
+                "Probability",
+                "Linear Programming"
+            ],
+            "Physics": [
+                "Electrostatics",
+                "Current Electricity",
+                "Magnetic Effects of Current and Magnetism",
+                "Electromagnetic Induction and Alternating Currents",
+                "Electromagnetic Waves",
+                "Optics",
+                "Dual Nature of Matter and Radiation",
+                "Atoms and Nuclei",
+                "Electronic Devices",
+                "Communication Systems"
+            ],
+            "Chemistry": {
+                "Physical Chemistry": [
+                    "Solid State",
+                    "Solutions",
+                    "Electrochemistry",
+                    "Chemical Kinetics",
+                    "Surface Chemistry"
+                ],
+                "Inorganic Chemistry": [
+                    "General Principles and Processes of Isolation of Metals",
+                    "The p-Block Elements",
+                    "The d- and f-Block Elements",
+                    "Coordination Compounds"
+                ],
+                "Organic Chemistry": [
+                    "Haloalkanes and Haloarenes",
+                    "Alcohols, Phenols, and Ethers",
+                    "Aldehydes, Ketones, and Carboxylic Acids",
+                    "Organic Compounds Containing Nitrogen",
+                    "Biomolecules",
+                    "Polymers",
+                    "Chemistry in Everyday Life"
+                ]
+            }
+        }
+    }
+}

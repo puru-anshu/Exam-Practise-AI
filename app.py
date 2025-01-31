@@ -4,8 +4,8 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///exam_prep.db'
-db = SQLAlchemy(app, use_native_unicode="utf8")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/exam_prep.db'
+db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 

@@ -5,3 +5,4 @@ Werkzeug
 SQLAlchemy
 openai
 python-dotenv
+ollama

@@ -87,10 +87,10 @@ def exam_setup(subject_id):
         num_questions = int(request.form.get('num_questions', 10))
         print(chapter_id)
         if chapter_id == 'all':
-            questions =generate_questions(f"{subject.name}", difficulty, num_questions)
+            questions =generate_questions(f"{subject.name}", difficulty, num_questions,use_ollama=False)
         else:
             chapter = Chapter.query.get(chapter_id)
-            questions = generate_questions(f"{subject.name} - {chapter.name}", difficulty, num_questions)
+            questions = generate_questions(f"{subject.name} - {chapter.name}", difficulty, num_questions,use_ollama=False)
         
         return render_template('exam.html', subject=subject, questions=questions, chapter_id=chapter_id)
     
