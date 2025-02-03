@@ -1,9 +1,9 @@
-from flask import render_template, request, redirect, url_for, flash, jsonify
+from flask import render_template, request, redirect, session, url_for, flash, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db, login_manager
 from models import User, ExamType, Class, Subject, Chapter, Question, Exam
-from openai_integration import generate_questions
+from openai_integration import generate_questions, get_explanation
 import json
 from datetime import datetime
 
@@ -87,10 +87,10 @@ def exam_setup(subject_id):
         num_questions = int(request.form.get('num_questions', 10))
         print(chapter_id)
         if chapter_id == 'all':
-            questions =generate_questions(f"{subject.name}", difficulty, num_questions,use_ollama=False)
+            questions =generate_questions(f"{subject.name}", difficulty, num_questions,use_ollama=True)
         else:
             chapter = Chapter.query.get(chapter_id)
-            questions = generate_questions(f"{subject.name} - {chapter.name}", difficulty, num_questions,use_ollama=False)
+            questions = generate_questions(f"{subject.name} - {chapter.name}", difficulty, num_questions,use_ollama=True)
         
         return render_template('exam.html', subject=subject, questions=questions, chapter_id=chapter_id)
     
@@ -133,6 +133,7 @@ def submit_exam():
     )
     db.session.add(exam)
     db.session.commit()
+    session['exam_results'] = results #Added this line to store results in session
 
     return render_template('exam_result.html', 
                            results=results, 
@@ -204,3 +205,21 @@ def admin_chapters():
     subjects = Subject.query.all()
     return render_template('admin/chapters.html', chapters=chapters, subjects=subjects)
 
+
+
+@app.route('/question_explanation/<int:question_id>')
+@login_required
+def question_explanation(question_id):
+    results = session.get('exam_results', [])
+    if question_id < 0 or question_id >= len(results):
+        flash('Invalid question ID', 'error')
+        return redirect(url_for('dashboard'))
+    
+    question = results[question_id]
+    if 'explanation' not in question:
+        explanation = get_explanation(question['question'], question['options'], question['correct_answer'])
+        question['explanation'] = explanation
+        results[question_id] = question
+        session['exam_results'] = results
+
+    return render_template('question_explanation.html', question=question)

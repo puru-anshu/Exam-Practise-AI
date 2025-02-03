@@ -6,3 +6,4 @@ SQLAlchemy
 openai
 python-dotenv
 ollama
+Flask-Markdown

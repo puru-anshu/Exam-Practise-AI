@@ -1,43 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Exam Prep</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #2B2B2B;
+            --text: #FFFFFF;
+            --link: #64E9F8;
+            --link-hover: #4FB8E6;
+            --header-bg: #161616;
+            --header-text: #FFFFFF;
+            --footer-bg: #161616;
+            --footer-text: #FFFFFF;
         }
-    </script>   
-
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto Flex:opsz';
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--link-hover);
+        }
+        .header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+        }
+        .footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+        }
+    </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50">
-   
-        <nav class="bg-white shadow-lg">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="flex justify-between h-16">
-                    <div class="flex">
-                        <a href="{{ url_for('home') }}" class="flex-shrink-0 flex items-center">
-                            <span class="text-2xl font-bold text-blue-600">AI Learning Platform</span>
-                        </a>
-                       
-                    </div>
-                    <div class="flex items-center">
-                        {% if current_user.is_authenticated %}
-                        <span class="text-gray-700 mr-4">{{ current_user.name }}</span>
-                        <a href="{{ url_for('dashboard') }}" class="text-gray-700 hover:text-gray-900 mr-4"">Dashboard</a>
-                        <a href="{{ url_for('logout') }}" class="bg-blue-600 text-white px-4 py-2 rounded-md">Logout</a>
-                        {% else %}
-                        <a href="{{ url_for('login') }}" class="text-gray-700 hover:text-gray-900 mr-4">Login</a>
-                        <a href="{{ url_for('register') }}" class="bg-blue-600 text-white px-4 py-2 rounded-md">Register</a>
-                        {% endif %}
-                    </div>
+<body class="flex flex-col min-h-screen">
+    <header class="header bg-black">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="{{ url_for('home') }}" class="text-2xl font-bold text-white">AI Learning Platform</a>
+                </div>
+                <div class="flex items-center">
+                    {% if current_user.is_authenticated %}
+                    <span class="text-white mr-4">{{ current_user.name }}</span>
+                    <a href="{{ url_for('dashboard') }}" class="text-white hover:text-blue-300 mr-4">Dashboard</a>
+                    <a href="{{ url_for('logout') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Logout</a>
+                    {% else %}
+                    <a href="{{ url_for('login') }}" class="text-white hover:text-blue-300 mr-4">Login</a>
+                    <a href="{{ url_for('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Register</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
-       
-    <main class="container mx-auto px-4 py-8">
+    </header>
+    <main class="container mx-auto px-4 py-8 flex-grow">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -49,9 +70,9 @@
         {% endwith %}
         {% block content %}{% endblock %}
     </main>
-    <footer class="bg-gray-200 py-4 mt-auto">
-        <div class="container mx-auto px-4 text-center text-gray-600">
-            © 2025 AI Exam Prep. All rights reserved.
+    <footer class="footer bg-gray-800 py-4 mt-auto">
+        <div class="container mx-auto px-4 text-center text-white">
+            &copy; 2025 AI Exam Prep. All rights reserved.
         </div>
     </footer>
 </body>

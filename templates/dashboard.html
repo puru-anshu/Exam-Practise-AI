@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1 class="mb-4 text-5xl text-gray-900 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Select an Exam Type</h2>
+<h1 class="mb-4 text-5xl lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Select an Exam Type</h2>
 <div class="grid grid-cols-2 gap-4">
     {% for exam_type in exam_types %}
     <a href="{{ url_for('exam_type', exam_type_id=exam_type.id) }}" 
-      class="bg-white hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-center">
+      class=" border border-gray-200 rounded-lg p-4 text-center">
         <h3 class="text-xl font-semibold">{{ exam_type.name }}</h3>
-        <p class="text-gray-600">{{ exam_type.description }}</p>
+        <p >{{ exam_type.description }}</p>
     </a>
     {% endfor %}
 </div>

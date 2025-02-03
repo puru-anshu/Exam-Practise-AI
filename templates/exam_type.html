@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="bg-white">
+<div >
     <div class="max-w-7xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            <h1 class="text-4xl font-extrabold sm:text-5xl sm:tracking-tight lg:text-6xl">
                 {{ exam_type.name }}
             </h1>
-            <p class="mt-5 max-w-xl mx-auto text-xl text-gray-500">
+            <p class="mt-5 max-w-xl mx-auto text-xl ">
                 {{exam_type.description}}
             </p>
         </div>
@@ -17,7 +17,7 @@
 <div class="grid grid-cols-2 gap-4 py-8">
     {% for class in classes %}
     <a href="{{ url_for('class_view', class_id=class.id) }}"
-        class="bg-white hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-center">
+        class="border border-gray-200 rounded-lg p-4 text-center">
         <h3 class="text-xl font-semibold">{{ class.name }}</h3>
     </a>
     {% endfor %}

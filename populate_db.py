@@ -7,8 +7,7 @@ def populate_database(recreate_db=True):
         if recreate_db:
             db.drop_all()
             db.create_all()
-
-        print("Database created")
+            print("Database created")
 
         # Create exam types
         cbse = ExamType(name="CBSE", description="Central Board of Secondary Education")
@@ -16,7 +15,7 @@ def populate_database(recreate_db=True):
         db.session.add_all([cbse, iit_jee])
         db.session.commit()
         print("Added Exam Type")
-        
+
         with open("data/iit-syllabus.json") as f:
             data = json.load(f)
             data = data["IIT JEE Syllabus"]

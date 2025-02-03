@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Exam Prep</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Flex:opsz';
+        }
+    </style>
+    <script>hljs.highlightAll();</script>
+
+
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-50">
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Question Explanation</h1>
+
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Question</h2>
+        <p class="mb-4">{{ question.question }}</p>
+
+        {% if question.code %}
+        <pre><code class="language-python">{{ question.code }}</code></pre>
+        {% endif %}
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Options</h3>
+        <div class="space-y-2 mb-4">
+            {% for option in question.options %}
+            <div class="flex items-center">
+                <span
+                    class="w-6 h-6 flex items-center justify-center rounded-full mr-2 
+                        {{ 'bg-green-500 text-white' if loop.index == question.correct_answer|int else 'bg-gray-200' }}">
+                    {{ loop.index }}
+                </span>
+                <span>{{ option }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Explanation</h3>
+        <div class="space-y-2 mb-4">
+            {{ question.explanation | replace("```", " ") | replace("html", " ") | markdown}}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+</body>

@@ -1,64 +1,44 @@
-{% extends "base.html" %} {% block content %} 
+{% extends "base.html" %} {% block content %}
 
 {% set cid = request.args.get('chapter_id', 'all') %}
-<div class="bg-white py-2 px-4">
+<div class=" py-2 px-4"> 
   <div class="max-w-7xl mx-auto py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
     <div class="text-center">
-      <h1 class="text-4xl font-extrabold text-gray-900">
+      <h1 class="text-4xl font-extrabold ">
         Exam Setup: {{ subject.name }}
-      </h1>
+      </h1> 
     </div>
   </div>
 
   <form id="examSetupForm" class="space-y-4">
     <div>
-      <label for="chapter_id" class="block text-sm font-medium text-gray-700"
-        >Chapter</label
-      >
-      <select
-        name="chapter_id"
-        id="chapter_id"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option value="all">All Chapters</option>
+      <label for="chapter_id" class="block text-sm font-medium">Chapter</label>
+      <select name="chapter_id" id="chapter_id"
+        class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-blue-700" >
+          <option value="all">All Chapters</option>
         {% for chapter in chapters %}
-        <option value="{{ chapter.id }}" {% if chapter.id|string == cid %} selected {% endif %} >
-          {{ chapter.name }} 
+        <option value="{{ chapter.id }}" {% if chapter.id|string==cid %} selected {% endif %}>
+          {{ chapter.name }}
         </option>
         {% endfor %}
       </select>
     </div>
     <div>
-      <label for="difficulty" class="block text-sm font-medium text-gray-700"
-        >Difficulty</label
-      >
-      <select
-        name="difficulty"
-        id="difficulty"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
+      <label for="difficulty" class="block text-sm font-medium">Difficulty</label>
+      <select name="difficulty" id="difficulty"
+        class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-blue-700">
         <option value="easy">Easy</option>
         <option value="medium" selected>Medium</option>
         <option value="hard">Hard</option>
       </select>
     </div>
     <div>
-      <label for="num_questions" class="block text-sm font-medium text-gray-700"
-        >Number of Questions</label
-      >
-      <input
-        type="number"
-        name="num_questions"
-        id="num_questions"
-        min="1"
-        max="50"
-        value="10"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
+      <label for="num_questions" class="block text-sm font-medium ">Number of Questions</label>
+      <input type="number" name="num_questions" id="num_questions" min="1" max="50" value="10"
+        class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-blue-700" />
     </div>
-    
-    <button type="submit" 
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto">
+
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto">
       Start Exam
     </button>
   </form>
@@ -66,11 +46,7 @@
   <div id="loadingContainer" class="hidden mt-8">
     <p class="text-lg font-semibold mb-2">Generating exam questions...</p>
     <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-      <div
-        id="progressBar"
-        class="bg-blue-600 h-2.5 rounded-full"
-        style="width: 0%"
-      ></div>
+      <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
     </div>
     <p id="progressText" class="text-sm text-gray-600 mt-2">0%</p>
   </div>
